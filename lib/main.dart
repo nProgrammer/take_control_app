@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 2, 1, 24),
         appBar: AppBar(
-          title: Text('Flutter Screen Background Color Example'),
+          title: const Text('Flutter Screen Background Color Example'),
           backgroundColor: Colors.black12,
         ),
         body: Center(
@@ -30,11 +30,11 @@ class Body extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.05,
       padding: const EdgeInsets.all(10),
       child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
         child: Container(
           height: 10,
-          color: Color.fromARGB(50, 255, 255, 255),
-          child: Text(
+          color: const Color.fromARGB(50, 255, 255, 255),
+          child: const Text(
             "Hi",
             textAlign: TextAlign.center,
             style: const TextStyle(color: Color.fromARGB(155, 255, 255, 255)),
