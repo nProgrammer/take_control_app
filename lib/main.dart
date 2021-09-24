@@ -1,45 +1,83 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  static const String _title = 'Take Control';
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 2, 1, 24),
-        appBar: AppBar(
-          title: const Text('Flutter Screen Background Color Example'),
-          backgroundColor: Colors.black12,
-        ),
-        body: Center(
-          child: Body(),
-        ),
-      ),
+    return const MaterialApp(
+      title: _title,
+      home: MyStatefulWidget(),
     );
   }
 }
 
-/// This is the stateless widget that the main application instantiates.
-class Body extends StatelessWidget {
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Dashboard',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Statistics',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Settings',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.6,
-      height: MediaQuery.of(context).size.height * 0.05,
-      padding: const EdgeInsets.all(10),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-        child: Container(
-          height: 10,
-          color: const Color.fromARGB(50, 255, 255, 255),
-          child: const Text(
-            "Hi",
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Color.fromARGB(155, 255, 255, 255)),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Take Control'),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            label: 'Dashboard',
+            backgroundColor: Colors.red,
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Statistics',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: Colors.pink,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
