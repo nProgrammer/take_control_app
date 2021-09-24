@@ -6,6 +6,7 @@
 */
 
 import 'package:flutter/material.dart';
+import './bottom_menu.dart';
 
 void main() => runApp(const MyApp());
 
@@ -27,28 +28,11 @@ class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<MyStatefulWidget> createState() => MyStatefulWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Dashboard',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Statistics',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Settings',
-      style: optionStyle,
-    ),
-  ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -62,9 +46,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         title: const Text('Take Control'),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        // <- BODY OF APP
+        child: menuOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        // <- MENU BAR
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.dashboard),
