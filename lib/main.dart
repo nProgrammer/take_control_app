@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import './bottom_menu.dart';
+import './counter_stimulants.dart';
 
 void main() => runApp(const MyApp());
 
@@ -47,7 +48,10 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
       ),
       body: Center(
         // <- BODY OF APP
-        child: menuOptions.elementAt(_selectedIndex),
+        child: Container(
+          color: const Color.fromARGB(255, 2, 1, 24),
+          child: counterStimulants,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         // <- MENU BAR
