@@ -10,6 +10,7 @@ import 'package:flutter/widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 Container _generateElement(BuildContext context) {
+  //! <- funtion that is returning full counter box
   double xc = MediaQuery.of(context).size.width;
   double yc = MediaQuery.of(context).size.height;
   double xs = 0.2 * xc;
@@ -35,6 +36,7 @@ Container _generateElement(BuildContext context) {
 }
 
 Row generateCounter(BuildContext context) {
+  //! <- function that is returning whole counter screen to ./main.dart
   double yc = MediaQuery.of(context).size.height;
   double a3 = 0.1 * yc;
   double a4 = 0.05 * yc;
@@ -65,6 +67,7 @@ Row generateCounter(BuildContext context) {
 
 Row _generateRowOfElements(
     double xo, double a, double a2, double xp, String image, String _desc) {
+  //! <- function that is returning elements that are inside counter box
   return Row(
     children: [
       Container(
@@ -162,6 +165,7 @@ Row _generateRowOfElements(
 }
 
 List<Widget> _generateChildren(Container _element, double a3, double a4) {
+  //! <- function that is returning all counter elements
   return [
     Container(
       height: a3,
