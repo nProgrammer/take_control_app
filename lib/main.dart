@@ -50,7 +50,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
         // <- BODY OF APP
         child: Container(
           color: const Color.fromARGB(255, 2, 1, 24),
-          child: counterStimulants,
+          child: generateCounter(context),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
